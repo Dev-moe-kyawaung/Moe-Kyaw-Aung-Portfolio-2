@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contact — Moe Kyaw Aung</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Contact Moe Kyaw Aung for Android development projects and collaborations." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:400;500;700;900&family=Rajdhani:400;500;600;700&family=Inter:400;500;600;700&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            orbitron: ['Orbitron', 'ui-sans-serif', 'system-ui'],
+            rajdhani: ['Rajdhani', 'ui-sans-serif', 'system-ui'],
+            inter: ['Inter', 'ui-sans-serif', 'system-ui'],
+          },
+          colors: {
+            neon: { base: '#00ffd5', pink: '#ff00ff', purple: '#7c3aed', blue: '#22d3ee' },
+            cyber: { bg: '#050507', card: '#0b0b10', border: '#15151a' },
+          },
+        },
+      },
+    };
+  </script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+
+  <style>
+    :root {
+      --neon-base: #00ffd5;
+      --neon-purple: #7c3aed;
+      --cyber-bg: #050507;
+      --cyber-card: #0b0b10;
+      --cyber-border: #15151a;
+    }
+    body {
+      background: var(--cyber-bg);
+      color: #e5e7eb;
+      font-family: 'Rajdhani', ui-sans-serif, system-ui;
+    }
+    .custom-cursor {
+      position: fixed; width: 18px; height: 18px; border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, var(--neon-base), var(--neon-purple));
+      box-shadow: 0 0 12px var(--neon-base), 0 0 24px var(--neon-purple);
+      transform: translate(-50%, -50%); pointer-events: none; z-index: 9999; mix-blend-mode: screen;
+    }
+    .custom-cursor.hover { width: 32px; height: 32px; }
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-up.show { opacity: 1; transform: translateY(0); }
+    .section { padding: 4rem 5%; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--neon-base), var(--neon-purple));
+      color: #050507; font-family: 'Orbitron'; font-weight: 700;
+      padding: 0.75rem 1.5rem; border-radius: 999px; border: 0;
+      box-shadow: 0 0 16px var(--neon-base);
+      text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-secondary {
+      background: transparent; color: var(--neon-base); font-family: 'Orbitron'; font-weight: 700;
+      padding: 0.75rem 1.5rem; border-radius: 999px; border: 1px solid var(--neon-base);
+      text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .cyber-card {
+      background: var(--cyber-card); border: 1px solid var(--cyber-border);
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .cyber-card:hover { transform: translateY(-4px); border-color: rgba(0,255,213,0.4); }
+    .form-group { margin-bottom: 1rem; }
+    .form-label { font-size: 0.9rem; color: #cbd5e1; margin-bottom: 0.25rem; }
+    .form-input, .form-textarea {
+      width: 100%; background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.12); color: #e5e7eb;
+      padding: 0.6rem 0.75rem; border-radius: 0.5rem;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .form-input:focus, .form-textarea:focus {
+      outline: none; border-color: var(--neon-base); background: rgba(0,255,213,0.06);
+    }
+    .social-icons { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .social-icon {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.12);
+      color: var(--neon-base); transition: border-color 0.2s, background 0.2s, transform 0.15s;
+      text-decoration: none;
+    }
+    .social-icon:hover { border-color: var(--neon-base); background: rgba(0,255,213,0.08); transform: translateY(-2px); }
+    .bg-grid {
+      background-image:
+        linear-gradient(to right, rgba(0,255,213,0.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0,255,213,0.06) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+  </style>
+</head>
+<body class="bg-grid">
+  <div class="custom-cursor" id="cursor"></div>
+
+  <nav class="fixed top-0 left-0 right-0 z-50 border-b border-[rgba(255,255,255,0.08)] bg-[rgba(5,5,7,0.85)] backdrop-blur">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <img src="https://res.cloudinary.com/dye5qpwii/image/upload/v1778763535/MKA_25_lbx6fb.webp"
+             alt="Moe Kyaw Aung" class="w-10 h-10 rounded-full border border-[rgba(0,255,213,0.4)]" />
+        <div>
+          <div class="font-orbitron text-sm text-neon-base">MOE KYAW AUNG</div>
+          <div class="text-xs opacity-80">Android Senior Developer</div>
+        </div>
+      </a>
+      <div class="hidden md:flex items-center gap-6">
+        <a href="index.html" class="text-sm hover:text-neon-base">Home</a>
+        <a href="about.html" class="text-sm hover:text-neon-base">About</a>
+        <a href="certificates.html" class="text-sm hover:text-neon-base">Certificates</a>
+        <a href="apps.html" class="text-sm hover:text-neon-base">Apps</a>
+        <a href="github.html" class="text-sm hover:text-neon-base">GitHub</a>
+        <a href="lovable.html" class="text-sm hover:text-neon-base">Lovable WPA</a>
+        <a href="contact.html" class="text-sm hover:text-neon-base">Contact</a>
+        <button id="theme-toggle" class="w-10 h-10 rounded-full border border-[rgba(255,255,255,0.12)] flex items-center justify-center hover:border-neon-base">
+          <i class="fas fa-moon text-neon-base"></i>
+        </button>
+      </div>
+      <button id="hamburger" class="md:hidden w-10 h-10 rounded-full border border-[rgba(255,255,255,0.12)] flex items-center justify-center">
+        <i class="fas fa-bars text-neon-base"></i>
+      </button>
+    </div>
+    <div id="mobile-menu" class="md:hidden border-t border-[rgba(255,255,255,0.08)] bg-[rgba(5,5,7,0.95)]">
+      <div class="px-4 py-3 flex flex-col gap-2">
+        <a href="index.html" class="text-sm hover:text-neon-base">Home</a>
+        <a href="about.html" class="text-sm hover:text-neon-base">About</a>
+        <a href="certificates.html" class="text-sm hover:text-neon-base">Certificates</a>
+        <a href="apps.html" class="text-sm hover:text-neon-base">Apps</a>
+        <a href="github.html" class="text-sm hover:text-neon-base">GitHub</a>
+        <a href="lovable.html" class="text-sm hover:text-neon-base">Lovable WPA</a>
+        <a href="contact.html" class="text-sm hover:text-neon-base">Contact</a>
+        <button id="theme-toggle-mobile" class="w-full mt-1 py-2 rounded border border-[rgba(255,255,255,0.12)] text-neon-base">Toggle Dark/Light</button>
+      </div>
+    </div>
+  </nav>
+
+  <section class="section">
+    <div class="fade-up">Contact</div>
+    <h2 class="fade-up font-orbitron text-3xl text-neon-base mt-2">Let's Build Something Amazing</h2>
+
+    <div class="grid md:grid-cols-2 gap-8 mt-6">
+      <!-- Contact form -->
+      <div class="fade-up">
+        <form id="contact-form" novalidate>
+          <div class="form-group">
+            <label class="form-label">Name</label>
+            <input class="form-input" type="text" name="name" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input class="form-input" type="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Subject</label>
+            <input class="form-input" type="text" name="subject" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Message</label>
+            <textarea class="form-textarea" name="message" rows="4" required></textarea>
+          </div>
+          <button type="submit" class="btn-primary">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+        </form>
+      </div>
+
+      <!-- Info + Map + Newsletter -->
+      <div class="fade-up">
+        <div class="cyber-card p-4">
+          <div class="font-semibold text-neon-base">Contact Info</div>
+          <div class="text-sm mt-2">
+            <div><i class="fas fa-phone text-neon-base"></i> +95 9 889 000 889</div>
+            <div class="text-sm"><i class="fas fa-phone text-neon-base"></i> +959 666 000 050</div>
+            <div class="text-sm mt-1"><i class="fas fa-map-marker-alt text-neon-base"></i> Tachileik, Myanmar 🇲🇲 ↔ Bangkok, Thailand 🇹🇭</div>
+          </div>
+
+          <div class="social-icons mt-4">
+            <a href="https://github.com/Dev-moe-kyawaung" target="_blank" class="social-icon" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://gravatar.com/moekyawaung13721" target="_blank" class="social-icon" title="Gravatar"><i class="fas fa-user-circle"></i></a>
+            <a href="mailto:moekyawaung@programmer.net" class="social-icon" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="tel:+959889000889" class="social-icon" title="Phone"><i class="fas fa-phone"></i></a>
+            <a href="https://www.linkedin.com/in/moe-kyaw-aung-2653093a1" target="_blank" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          </div>
+
+          <div class="mt-4">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12000!2d98.5!3d22.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1"
+              width="100%" height="180" style="border:0; border-radius:0.5rem;"
+              allowfullscreen="" loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+
+        <div class="cyber-card p-4 mt-4">
+          <div class="font-semibold text-neon-base">Newsletter</div>
+          <div class="text-sm">Subscribe for updates on new apps and tech insights.</div>
+          <form id="newsletter-form" class="mt-2 flex gap-2">
+            <input class="form-input" type="email" placeholder="Your email" required />
+            <button type="submit" class="btn-primary">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="border-t border-[rgba(255,255,255,0.08)] bg-[rgba(5,5,7,0.95)]">
+    <div class="max-w-7xl mx-auto px-4 py-6 grid md:grid-cols-3 gap-4">
+      <div>
+        <div class="font-orbitron text-neon-base">MOE KYAW AUNG</div>
+        <div class="text-sm opacity-80">Senior Android Developer</div>
+      </div>
+      <div>
+        <div class="font-semibold text-neon-base">Quick Links</div>
+        <div class="text-sm mt-2 flex flex-col gap-1">
+          <a href="index.html" class="hover:text-neon-base">Home</a>
+          <a href="about.html" class="hover:text-neon-base">About</a>
+          <a href="apps.html" class="hover:text-neon-base">Apps</a>
+          <a href="contact.html" class="hover:text-neon-base">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div class="font-semibold text-neon-base">Connect</div>
+        <div class="flex flex-wrap gap-2 mt-2">
+          <a href="https://github.com/Dev-moe-kyawaung" target="_blank" class="w-10 h-10 rounded-full border border-[rgba(255,255,255,0.12)] flex items-center justify-center text-neon-base hover:border-neon-base"><i class="fab fa-github"></i></a>
+          <a href="https://gravatar.com/moekyawaung13721" target="_blank" class="w-10 h-10 rounded-full border border-[rgba(255,255,255,0.12)] flex items-center justify-center text-neon-base hover:border-neon-base"><i class="fas fa-user-circle"></i></a>
+          <a href="https://www.linkedin.com/in/moe-kyaw-aung-2653093a1" target="_blank" class="w-10 h-10 rounded-full border border-[rgba(255,255,255,0.12)] flex items-center justify-center text-neon-base hover:border-neon-base"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a id="back-to-top" href="index.html" class="btn-secondary fixed right-4 bottom-4">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <script>
+    const cursor = document.getElementById('cursor');
+    document.addEventListener('mousemove', e => { cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px'; });
+    document.addEventListener('mouseover', e => { if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON' || e.target.closest('.cyber-card')) cursor.classList.add('hover'); else cursor.classList.remove('hover'); });
+
+    function setTheme(dark) {
+      const html = document.documentElement;
+      if (dark) { html.classList.add('dark'); html.classList.remove('light'); }
+      else { html.classList.remove('dark'); html.classList.add('light'); }
+    }
+    document.getElementById('theme-toggle')?.addEventListener('click', () => setTheme(!document.documentElement.classList.contains('dark')));
+    document.getElementById('theme-toggle-mobile')?.addEventListener('click', () => setTheme(!document.documentElement.classList.contains('dark')));
+    document.getElementById('hamburger')?.addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
+
+    const fadeUpElements = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('show'); });
+    }, { threshold: 0.1 });
+    fadeUpElements.forEach(el => observer.observe(el));
+
+    const contactForm = document.getElementById('contact-form');
+    contactForm?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = contactForm.querySelector('input[name="name"]')?.value;
+      const email = contactForm.querySelector('input[name="email"]')?.value;
+      const subject = contactForm.querySelector('input[name="subject"]')?.value;
+      const message = contactForm.querySelector('textarea[name="message"]')?.value;
+
+      if (!name || !email || !subject || !message) {
+        alert('Please fill in all fields.');
+        return;
+      }
+      alert('Message sent! (Simulation)');
+      contactForm.reset();
+    });
+
+    const newsletterForm = document.getElementById('newsletter-form');
+    newsletterForm?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = newsletterForm.querySelector('input[type="email"]')?.value;
+      if (!email) { alert('Please enter your email.'); return; }
+      alert('Subscribed! (Simulation)');
+      newsletterForm.reset();
+    });
+
+    const backToTop = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) backToTop?.classList.add('visible');
+      else backToTop?.classList.remove('visible');
+    });
+  </script>
+</body>
+</html>
