@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <title>Emails — Moe Kyaw Aung</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Email collection of Moe Kyaw Aung for contact and collaboration." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:400;500;700;900&family=Rajdhani:400;500;600;700&family=Inter:400;500;600;700&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            orbitron: ['Orbitron', 'ui-sans-serif', 'system-ui'],
+            rajdhani: ['Rajdhani', 'ui-sans-serif', 'system-ui'],
+            inter: ['Inter', 'ui-sans-serif', 'system-ui'],
+          },
+          colors: {
+            neon: { base: '#00ffd5', pink: '#ff00ff', purple: '#7c3aed', blue: '#22d3ee' },
+            cyber: { bg: '#050507', card: '#0b0b10', border: '#15151a' },
+          },
+        },
+      },
+    };
+  </script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+
+  <style>
+    :root {
+      --neon-base: #00ffd5;
+      --neon-purple: #7c3aed;
+      --cyber-bg: #050507;
+      --cyber-card: #0b0b10;
+      --cyber-border: #15151a;
+    }
+    body {
+      background: var(--cyber-bg);
+      color: #e5e7eb;
+      font-family: 'Rajdhani', ui-sans-serif, system-ui;
+    }
+    .custom-cursor {
+      position: fixed; width: 18px; height: 18px; border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, var(--neon-base), var(--neon-purple));
+      box-shadow: 0 0 12px var(--neon-base), 0 0 24px var(--neon-purple);
+      transform: translate(-50%, -50%); pointer-events: none; z-index: 9999; mix-blend-mode: screen;
+    }
+    .custom-cursor.hover { width: 32px; height: 32px; }
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-up.show { opacity: 1; transform: translateY(0); }
+    .section { padding: 4rem 5%; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--neon-base), var(--neon-purple));
+      color: #050507; font-family: 'Orbitron'; font-weight: 700;
+      padding: 0.75rem 1.5rem; border-radius: 999px; border: 0;
+      box-shadow: 0 0 16px var(--neon-base);
+      text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-secondary {
+      background: transparent; color: var(--neon-base); font-family: 'Orbitron'; font-weight: 700;
+      padding: 0.75rem 1.5rem; border-radius: 999px; border: 1px solid var(--neon-base);
+      text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .cyber-card {
+      background: var(--cyber-card); border: 1px solid var(--cyber-border);
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .cyber-card:hover { transform: translateY(-4px); border-color: rgba(0,255,213,0.4); }
+    .links-list {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0.75rem;
+    }
+    .link-item {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      padding: 0.5rem 0.75rem; border-radius: 0.5rem;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .link-item:hover { border-color: var(--neon-base); background: rgba(0,255,213,0.06); }
+    .link-item a { color: var(--neon-base); text-decoration: none; font-size: 0.9rem; }
+    .bg-grid {
+      background-image:
+        linear-gradient(to right, rgba(0,255,213,0.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0,255,213,0.06) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+  </style>
+</head>
+<body class="bg-grid">
+  <div class="custom-cursor" id="cursor"></div>
+
+  <nav class="fixed top-0 left-0 right-0 z-50 border-b border-[rgba(255,255,255,0.08)] bg-[rgba(5,5,7,0.85)] backdrop-blur">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <img src="https://res.cloudinary.com/dye5qpwii/image/upload/v1778763535/MKA_25_lbx6fb.webp"
+             alt="Moe Kyaw Aung" class="w-10 h-10 rounded-full border border-[rgba(0,255,213,0.4)]" />
+        <div>
+          <div class="font-orbitron text-sm text-neon-base">MOE KYAW AUNG</div>
+          <div class="text-xs opacity-80">Android Senior Developer</div>
+        </div>
+      </a>
+      <div class="hidden md:flex items-center gap-6">
+        <a href="index.html" class="text-sm hover:text-neon-base">Home</a>
+        <a href="about.html" class="text-sm hover:text-neon-base">About</a>
+        <a href="certificates.html" class="text-sm hover:text-neon-base">Certificates</a>
+        <a href="apps.html" class="text-sm hover:text-neon-base">Apps</a>
+        <a href="github.html" class="text-sm hover:text-neon-base">GitHub</a>
+        <a href="lovable.html" class="text-sm hover:text-neon-base">Lovable WPA</a>
+        <a href="contact.html" class="text-sm hover:text-neon-base">Contact</a>
+        <button id="theme-toggle" class="w-10 h-10 rounded-full border border-[rgba(255,255,255,0.12)] flex items-center justify-center hover:border-neon-base">
+          <i class="fas fa-moon text-neon-base"></i>
+        </button>
+      </div>
+      <button id="hamburger" class="md:hidden w-10 h-10 rounded-full border border-[rgba(255,255,255,0.12)] flex items-center justify-center">
+        <i class="fas fa-bars text-neon-base"></i>
+      </button>
+    </div>
+    <div id="mobile-menu" class="md:hidden border-t border-[rgba(255,255,255,0.08)] bg-[rgba(5,5,7,0.95)]">
+      <div class="px-4 py-3 flex flex-col gap-2">
+        <a href="index.html" class="text-sm hover:text-neon-base">Home</a>
+        <a href="about.html" class="text-sm hover:text-neon-base">About</a>
+        <a href="certificates.html" class="text-sm hover:text-neon-base">Certificates</a>
+        <a href="apps.html" class="text-sm hover:text-neon-base">Apps</a>
+        <a href="github.html" class="text-sm hover:text-neon-base">GitHub</a>
+        <a href="lovable.html" class="text-sm hover:text-neon-base">Lovable WPA</a>
+        <a href="contact.html" class="text-sm hover:text-neon-base">Contact</a>
+        <button id="theme-toggle-mobile" class="w-full mt-1 py-2 rounded border border-[rgba(255,255,255,0.12)] text-neon-base">Toggle Dark/Light</button>
+      </div>
+    </div>
+  </nav>
+
+  <section class="section">
+    <div class="fade-up">Contact</div>
+    <h2 class="fade-up font-orbitron text-3xl text-neon-base mt-2">Email Collections</h2>
+
+    <div class="links-list fade-up mt-4">
+      <div class="link-item"><i class="fas fa-envelope text-neon-base"></i><a href="mailto:moekyawaung@programmer.net">moekyawaung@programmer.net</a></div>
+      <div class="link-item"><i class="fas fa-envelope text-neon-base"></i><a href="mailto:moekyawaung@collector.org">moekyawaung@collector.org</a></div>
+      <div class="link-item"><i class="fas fa-envelope text-neon-base"></i><a href="mailto:moekyawaung@technologist.com">moekyawaung@technologist.com</a></div>
+      <div class="link-item"><i class="fas fa-envelope text-neon-base"></i><a href="mailto:moekyawaung@techie.com">moekyawaung@techie.com</a></div>
+      <div class="link-item"><i class="fas fa-envelope text-neon-base"></i><a href="mailto:moekyawaung@graphic-designer.com">moekyawaung@graphic-designer.com</a></div>
+      <div class="link-item"><i class="fas fa-envelope text-neon-base"></i><a href="mailto:moekyawaung@cybergal.com">moekyawaung@cybergal.com</a></div>
+      <div class="link-item"><i class="fas fa-envelope text-neon-base"></i><a href="mailto:moekyawaung@webname.com">moekyawaung@webname.com</a></div>
+      <div class="link-item"><i class="fas fa-envelope text-neon-base"></i><a href="mailto:moekyawaung@hackermail.com">moekyawaung@hackermail.com</a></div>
+      <div class="link-item"><i class="fas fa-envelope text-neon-base"></i><a href="mailto:moekyawaung@graduate.org">moekyawaung@graduate.org</a></div>
+      <div class="link-item"><i class="fas fa-envelope text-neon-base"></i><a href="mailto:moekyawaung@engineer.com">moekyawaung@engineer.com</a></div>
+      <div class="link-item"><i class="fas fa-envelope text-neon-base"></i><a href="mailto:moekyawaung@asia.com">moekyawaung@asia.com</a></div>
+      <div class="link-item"><i class="fas fa-envelope text-neon-base"></i><a href="mailto:moekyawaung@contractor.net">moekyawaung@contractor.net</a></div>
+      <div class="link-item"><i class="fas fa-envelope text-neon-base"></i><a href="mailto:moekyawaung@linuxmail.org">moekyawaung@linuxmail.org</a></div>
+      <div class="link-item"><i class="fas fa-envelope text-neon-base"></i><a href="mailto:moekyawaung@usa.com">moekyawaung@usa.com</a></div>
+      <div class="link-item"><i class="fas fa-envelope text-neon-base"></i><a href="mailto:moekyawaung@europe.com">moekyawaung@europe.com</a></div>
+      <div class="link-item"><i class="fas fa-envelope text-neon-base"></i><a href="mailto:moekyawaung@mail.com">moekyawaung@mail.com</a></div>
+      <div class="link-item"><i class="fas fa-envelope text-neon-base"></i><a href="mailto:moekyawaung@iname.com">moekyawaung@iname.com</a></div>
+      <div class="link-item"><i class="fas fa-envelope text-neon-base"></i><a href="mailto:moekyawaung@socialogist.com">moekyawaung@socialogist.com</a></div>
+      <div class="link-item"><i class="fas fa-envelope text-neon-base"></i><a href="mailto:moekyawaung@secretary.net">moekyawaung@secretary.net</a></div>
+      <div class="link-item"><i class="fas fa-envelope text-neon-base"></i><a href="mailto:moekyawaung@publicist.com">moekyawaung@publicist.com</a></div>
+    </div>
+  </section>
+
+  <footer class="border-t border-[rgba(255,255,255,0.08)] bg-[rgba(5,5,7,0.95)]">
+    <div class="max-w-7xl mx-auto px-4 py-6 grid md:grid-cols-3 gap-4">
+      <div>
+        <div class="font-orbitron text-neon-base">MOE KYAW AUNG</div>
+        <div class="text-sm opacity-80">Senior Android Developer</div>
+      </div>
+      <div>
+        <div class="font-semibold text-neon-base">Quick Links</div>
+        <div class="text-sm mt-2 flex flex-col gap-1">
+          <a href="index.html" class="hover:text-neon-base">Home</a>
+          <a href="about.html" class="hover:text-neon-base">About</a>
+          <a href="lovable.html" class="hover:text-neon-base">Lovable WPA</a>
+          <a href="contact.html" class="hover:text-neon-base">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div class="font-semibold text-neon-base">Connect</div>
+        <div class="flex flex-wrap gap-2 mt-2">
+          <a href="https://github.com/Dev-moe-kyawaung" target="_blank" class="w-10 h-10 rounded-full border border-[rgba(255,255,255,0.12)] flex items-center justify-center text-neon-base hover:border-neon-base"><i class="fab fa-github"></i></a>
+          <a href="https://gravatar.com/moekyawaung13721" target="_blank" class="w-10 h-10 rounded-full border border-[rgba(255,255,255,0.12)] flex items-center justify-center text-neon-base hover:border-neon-base"><i class="fas fa-user-circle"></i></a>
+          <a href="https://www.linkedin.com/in/moe-kyaw-aung-2653093a1" target="_blank" class="w-10 h-10 rounded-full border border-[rgba(255,255,255,0.12)] flex items-center justify-center text-neon-base hover:border-neon-base"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a id="back-to-top" href="index.html" class="btn-secondary fixed right-4 bottom-4">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <script>
+    const cursor = document.getElementById('cursor');
+    document.addEventListener('mousemove', e => { cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px'; });
+    document.addEventListener('mouseover', e => { if (e.target.tagName === 'A' || e.target.closest('.cyber-card')) cursor.classList.add('hover'); else cursor.classList.remove('hover'); });
+
+    function setTheme(dark) {
+      const html = document.documentElement;
+      if (dark) { html.classList.add('dark'); html.classList.remove('light'); }
+      else { html.classList.remove('dark'); html.classList.add('light'); }
+    }
+    document.getElementById('theme-toggle')?.addEventListener('click', () => setTheme(!document.documentElement.classList.contains('dark')));
+    document.getElementById('theme-toggle-mobile')?.addEventListener('click', () => setTheme(!document.documentElement.classList.contains('dark')));
+    document.getElementById('hamburger')?.addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
+
+    const fadeUpElements = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('show'); });
+    }, { threshold: 0.1 });
+    fadeUpElements.forEach(el => observer.observe(el));
+
+    const backToTop = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) backToTop?.classList.add('visible');
+      else backToTop?.classList.remove('visible');
+    });
+  </script>
+</body>
+</html>
