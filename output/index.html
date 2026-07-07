@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <title>Moe Kyaw Aung — Senior Android Developer Portfolio</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Portfolio of Moe Kyaw Aung — Senior Android Developer with 12+ years in Kotlin, Jetpack Compose, Firebase, CI/CD, and clean architecture." />
+  <meta name="author" content="Moe Kyaw Aung" />
+  <meta name="theme-color" content="#0f172a" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:400;500;700;900&family=Rajdhani:400;500;600;700&family=Inter:400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS (CDN for dev) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            orbitron: ['Orbitron', 'ui-sans-serif', 'system-ui'],
+            rajdhani: ['Rajdhani', 'ui-sans-serif', 'system-ui'],
+            inter: ['Inter', 'ui-sans-serif', 'system-ui'],
+          },
+          colors: {
+            neon: {
+              base: '#00ffd5',
+              pink: '#ff00ff',
+              purple: '#7c3aed',
+              blue: '#22d3ee',
+              yellow: '#facc15',
+            },
+            cyber: {
+              bg: '#050507',
+              card: '#0b0b10',
+              border: '#15151a',
+            },
+          },
+          backgroundImage: {
+            'grid-neon':
+              "linear-gradient(to right, rgba(0,255,213,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,255,213,0.06) 1px, transparent 1px)",
+          },
+          backgroundSize: {
+            'grid': '40px 40px',
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha562-+something" crossorigin="anonymous" />
+
+  <style>
+    :root {
+      --neon-base: #00ffd5;
+      --neon-pink: #ff00ff;
+      --neon-purple: #7c3aed;
+      --neon-blue: #22d3ee;
+      --neon-yellow: #facc15;
+
+      --cyber-bg: #050507;
+      --cyber-card: #0b0b10;
+      --cyber-border: #15151a;
+    }
+
+    html, body {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--cyber-bg);
+      color: #e5e7eb;
+      font-family: 'Rajdhani', ui-sans-serif, system-ui;
+      overflow-x: hidden;
+    }
+
+    /* Custom cursor */
+    .custom-cursor {
+      position: fixed;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, var(--neon-base), var(--neon-purple));
+      box-shadow: 0 0 12px var(--neon-base), 0 0 24px var(--neon-purple);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 9999;
+      transition: width 0.15s, height 0.15s, transform 0.05s;
+      mix-blend-mode: screen;
+    }
+    .custom-cursor.hover {
+      width: 32px;
+      height: 32px;
+    }
+
+    /* Preloader */
+    #preloader {
+      position: fixed;
+      inset: 0;
+      background: #050507;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+    }
+    .loader-ring {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 6px solid rgba(0,255,213,0.15);
+      border-top-color: var(--neon-base);
+      animation: spin 1s linear infinite;
+      box-shadow: 0 0 20px var(--neon-base);
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Fade-up animation */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Section spacing compact */
+    .section {
+      padding: 4rem 5%;
+      position: relative;
+    }
+    .section-sep {
+      height: 1rem;
+    }
+
+    /* Hero background + particles canvas */
+    #hero-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Buttons */
+    .btn-primary {
+      background: linear-gradient(135deg, var(--neon-base), var(--neon-purple));
+      color: #050507;
+      font-family: 'Orbitron', ui-sans-serif, system-ui;
+      font-weight: 700;
+      padding: 0.75rem 1.5rem;
+      border-radius: 999px;
+      border: 0;
+      box-shadow: 0 0 16px var(--neon-base);
+      transition: transform 0.15s, box-shadow 0.15s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 24px var(--neon-base), 0 0 40px var(--neon-purple);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--neon-base);
+      font-family: 'Orbitron', ui-sans-serif, system-ui;
+      font-weight: 700;
+      padding: 0.75rem 1.5rem;
+      border-radius: 999px;
+      border: 1px solid var(--neon-base);
+      box-shadow: 0 0 10px rgba(0,255,213,0.2);
+      transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      background: rgba(0,255,213,0.08);
+      box-shadow: 0 0 18px rgba(0,255,213,0.4);
+    }
+
+    /* Stats counter */
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .stat-num {
+      font-family: 'Orbitron', ui-sans-serif, system-ui;
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--neon-base);
+      text-shadow: 0 0 12px var(--neon-base);
+    }
+    .stat-label {
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+
+    /* Progress rings */
+    .ring-wrap {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      width: 96px;
+      height: 96px;
+    }
+    .ring-svg {
+      width: 96px;
+      height: 96px;
+    }
+    .ring-bg {
+      fill: none;
+      stroke: rgba(255,255,255,0.08);
+      stroke-width: 8;
+    }
+    .ring-path {
+      fill: none;
+      stroke: var(--neon-base);
+      stroke-width: 8;
+      stroke-linecap: round;
+      transform: rotate(-90deg);
+      transform-origin: 50% 50%;
+      transition: stroke-dashoffset 1.2s ease;
+      filter: drop-shadow(0 0 6px var(--neon-base));
+    }
+    .ring-label {
+      position: absolute;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #e5e7eb;
+      text-align: center;
+      width: 100%;
+    }
+
+    /* Grid background */
+    .bg-grid {
+      background-image:
+        linear-gradient(to right, rgba(0,255,213,0.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0,255,213,0.06) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+  </style>
+</head>
+<body class="bg-grid">
+  <!-- Custom cursor -->
+  <div class="custom-cursor" id="cursor"></div>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="loader-ring"></div>
+  </div>
+
+  <!-- Fixed top navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 border-b border-[rgba(255,255,255,0.08)] bg-[rgba(5,5,7,0.85)] backdrop-blur">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <img src="https://res.cloudinary.com/dye5qpwii/image/upload/v1778763535/MKA_25_lbx6fb.webp"
+             alt="Moe Kyaw Aung"
+             class="w-10 h-10 rounded-full border border-[rgba(0,255,213,0.4)]" />
+        <div>
+          <div class="font-orbitron text-sm text-neon-base">MOE KYAW AUNG</div>
+          <div class="text-xs opacity-80">Android Senior Developer</div>
+        </div>
+      </a>
+
+      <!-- Desktop menu -->
+      <div class="hidden md:flex items-center gap-6">
+        <a href="index.html" class="text-sm hover:text-neon-base">Home</a>
+        <a href="about.html" class="text-sm hover:text-neon-base">About</a>
+        <a href="certificates.html" class="text-sm hover:text-neon-base">Certificates</a>
+        <a href="apps.html" class="text-sm hover:text-neon-base">Apps</a>
+        <a href="github.html" class="text-sm hover:text-neon-base">GitHub</a>
+        <a href="lovable.html" class="text-sm hover:text-neon-base">Lovable WPA</a>
+        <a href="contact.html" class="text-sm hover:text-neon-base">Contact</a>
+
+        <!-- Dark/Light toggle -->
+        <button id="theme-toggle" class="w-10 h-10 rounded-full border border-[rgba(255,255,255,0.12)] flex items-center justify-center hover:border-neon-base">
+          <i class="fas fa-moon text-neon-base"></i>
+        </button>
+      </div>
+
+      <!-- Hamburger -->
+      <button id="hamburger" class="md:hidden w-10 h-10 rounded-full border border-[rgba(255,255,255,0.12)] flex items-center justify-center">
+        <i class="fas fa-bars text-neon-base"></i>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="md:hidden border-t border-[rgba(255,255,255,0.08)] bg-[rgba(5,5,7,0.95)]">
+      <div class="px-4 py-3 flex flex-col gap-2">
+        <a href="index.html" class="text-sm hover:text-neon-base">Home</a>
+        <a href="about.html" class="text-sm hover:text-neon-base">About</a>
+        <a href="certificates.html" class="text-sm hover:text-neon-base">Certificates</a>
+        <a href="apps.html" class="text-sm hover:text-neon-base">Apps</a>
+        <a href="github.html" class="text-sm hover:text-neon-base">GitHub</a>
+        <a href="lovable.html" class="text-sm hover:text-neon-base">Lovable WPA</a>
+        <a href="contact.html" class="text-sm hover:text-neon-base">Contact</a>
+        <button id="theme-toggle-mobile" class="w-full mt-1 py-2 rounded border border-[rgba(255,255,255,0.12)] text-neon-base">
+          Toggle Dark/Light
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section id="home" class="section h-screen flex items-center relative overflow-hidden">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-content max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-8 items-center">
+      <div class="fade-up">
+        <h1 class="font-orbitron text-4xl md:text-5xl lg:text-6xl leading-tight">
+          <span class="text-neon-base">⭐ MOE KYAW AUNG ⭐</span><br />
+          <span class="text-neon-pink">ANDROID SENIOR DEVELOPER</span>
+        </h1>
+        <p class="hero-desc mt-4 text-base md:text-lg opacity-90">
+          Senior Android Engineer with 12+ years building secure, scalable, user-friendly mobile applications. Strong in Kotlin, Jetpack Compose, MVVM, Clean Architecture, Firebase, REST APIs, and CI/CD. Code with culture. Build with purpose.
+        </p>
+
+        <!-- Stats -->
+        <div class="hero-stats mt-6 grid grid-cols-4 gap-4">
+          <div class="stat-item">
+            <div class="stat-num" data-target="10">0</div>
+            <div class="stat-label">+ yrs experience</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num" data-target="3000">0</div>
+            <div class="stat-label">+ apps</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num" data-target="122">0</div>
+            <div class="stat-label">repos</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num" data-target="100">0</div>
+            <div class="stat-label">% satisfaction</div>
+          </div>
+        </div>
+
+        <div class="hero-btns mt-6 flex flex-wrap gap-3">
+          <a href="certificates.html" class="btn-primary">
+            <i class="fas fa-certificate"></i> View Certificates
+          </a>
+          <a href="contact.html" class="btn-secondary">
+            <i class="fas fa-paper-plane"></i> Contact Me
+          </a>
+        </div>
+      </div>
+
+      <div class="fade-up flex flex-col items-center justify-center gap-6">
+        <!-- Profile image with glow -->
+        <img src="https://res.cloudinary.com/dye5qpwii/image/upload/v1778763535/MKA_25_lbx6fb.webp"
+             alt="Moe Kyaw Aung Profile"
+             class="w-48 h-48 md:w-56 md:h-56 rounded-full border-2 border-neon-base shadow-[0_0_30px_rgba(0,255,213,0.4)] object-cover" />
+
+        <!-- Progress rings -->
+        <div class="flex gap-4">
+          <div class="ring-wrap">
+            <svg class="ring-svg" viewBox="0 0 96 96">
+              <circle class="ring-bg" cx="48" cy="48" r="40"></circle>
+              <circle class="ring-path" cx="48" cy="48" r="40"
+                      stroke-dasharray="251.2 251.2"
+                      stroke-dashoffset="251.2"
+                      id="ring-kotlin"></circle>
+            </svg>
+            <div class="ring-label">Kotlin</div>
+          </div>
+          <div class="ring-wrap">
+            <svg class="ring-svg" viewBox="0 0 96 96">
+              <circle class="ring-bg" cx="48" cy="48" r="40"></circle>
+              <circle class="ring-path" cx="48" cy="48" r="40"
+                      stroke-dasharray="251.2 251.2"
+                      stroke-dashoffset="251.2"
+                      id="ring-compose"></circle>
+            </svg>
+            <div class="ring-label">Compose</div>
+          </div>
+          <div class="ring-wrap">
+            <svg class="ring-svg" viewBox="0 0 96 96">
+              <circle class="ring-bg" cx="48" cy="48" r="40"></circle>
+              <circle class="ring-path" cx="48" cy="48" r="40"
+                      stroke-dasharray="251.2 251.2"
+                      stroke-dashoffset="251.2"
+                      id="ring-firebase"></circle>
+            </svg>
+            <div class="ring-label">Firebase</div>
+          </div>
+          <div class="ring-wrap">
+            <svg class="ring-svg" viewBox="0 0 96 96">
+              <circle class="ring-bg" cx="48" cy="48" r="40"></circle>
+              <circle class="ring-path" cx="48" cy="48" r="40"
+                      stroke-dasharray="251.2 251.2"
+                      stroke-dashoffset="251.2"
+                      id="ring-cicd"></circle>
+            </svg>
+            <div class="ring-label">CI/CD</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-sep"></div>
+
+  <!-- QUICK LINKS -->
+  <section class="section">
+    <div class="s-label fade-up">Explore</div>
+    <h2 class="s-title fade-up">Quick Links</h2>
+
+    <div class="grid md:grid-cols-3 gap-4 mt-4">
+      <a href="about.html" class="cyber-card p-4 fade-up">
+        <div class="font-orbitron text-neon-base">About</div>
+        <div class="text-sm mt-1">Advanced About + Timeline</div>
+      </a>
+      <a href="certificates.html" class="cyber-card p-4 fade-up">
+        <div class="font-orbitron text-neon-base">Certificates</div>
+        <div class="text-sm mt-1">82+ Programming Hub certs</div>
+      </a>
+      <a href="apps.html" class="cyber-card p-4 fade-up">
+        <div class="font-orbitron text-neon-base">Apps</div>
+        <div class="text-sm mt-1">Senior-level app collection</div>
+      </a>
+      <a href="github.html" class="cyber-card p-4 fade-up">
+        <div class="font-orbitron text-neon-base">GitHub</div>
+        <div class="text-sm mt-1">Accounts & featured projects</div>
+      </a>
+      <a href="lovable.html" class="cyber-card p-4 fade-up">
+        <div class="font-orbitron text-neon-base">Lovable WPA</div>
+        <div class="text-sm mt-1">Web app links collection</div>
+      </a>
+      <a href="contact.html" class="cyber-card p-4 fade-up">
+        <div class="font-orbitron text-neon-base">Contact</div>
+        <div class="text-sm mt-1">Hire me & collaborate</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer (inline for index) -->
+  <footer class="border-t border-[rgba(255,255,255,0.08)] bg-[rgba(5,5,7,0.95)]">
+    <div class="max-w-7xl mx-auto px-4 py-8 grid md:grid-cols-3 gap-6">
+      <div>
+        <div class="font-orbitron text-neon-base">MOE KYAW AUNG</div>
+        <div class="text-sm opacity-80">Senior Android Developer</div>
+        <div class="text-sm mt-2">
+          Code with culture. Build with purpose.
+        </div>
+      </div>
+
+      <div>
+        <div class="font-semibold text-neon-base">Quick Links</div>
+        <div class="text-sm mt-2 flex flex-col gap-1">
+          <a href="about.html" class="hover:text-neon-base">About</a>
+          <a href="certificates.html" class="hover:text-neon-base">Certificates</a>
+          <a href="apps.html" class="hover:text-neon-base">Apps</a>
+          <a href="github.html" class="hover:text-neon-base">GitHub</a>
+          <a href="contact.html" class="hover:text-neon-base">Contact</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="font-semibold text-neon-base">Connect</div>
+        <div class="social-icons mt-2 flex flex-wrap gap-2">
+          <a href="https://github.com/Dev-moe-kyawaung" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
+          <a href="https://gravatar.com/moekyawaung13721" target="_blank" class="social-icon"><i class="fas fa-user-circle"></i></a>
+          <a href="https://www.linkedin.com/in/moe-kyaw-aung-2653093a1" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
+          <a href="https://www.youtube.com/channel/UCuTXUguZb4xjeL2nX8WJG" target="_blank" class="social-icon"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.tumblr.com/moekyawaung" target="_blank" class="social-icon"><i class="fab fa-tumblr"></i></a>
+          <a href="https://www.flickr.com/people/204037451@N06" target="_blank" class="social-icon"><i class="fab fa-flickr"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <a id="back-to-top" href="index.html" class="btn-secondary">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <!-- Sticky CTA -->
+  <a id="sticky-cta" href="contact.html" class="btn-primary">
+    <i class="fas fa-paper-plane"></i> Hire Me
+  </a>
+
+  <style>
+    /* Cyber card & social icons reused */
+    .cyber-card {
+      background: var(--cyber-card);
+      border: 1px solid var(--cyber-border);
+      box-shadow: 0 0 0 rgba(0,255,213,0);
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    }
+    .cyber-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(0,255,213,0.08), 0 0 20px rgba(124,58,237,0.15);
+      border-color: rgba(0,255,213,0.4);
+    }
+    .social-icons .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--neon-base);
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+      text-decoration: none;
+    }
+    .social-icons .social-icon:hover {
+      border-color: var(--neon-base);
+      background: rgba(0,255,213,0.08);
+      transform: translateY(-2px);
+    }
+  </style>
+
+  <script>
+    // Preloader
+    window.addEventListener('load', () => {
+      const preloader = document.getElementById('preloader');
+      preloader.style.opacity = '0';
+      setTimeout(() => {
+        preloader.style.display = 'none';
+      }, 300);
+    });
+
+    // Custom cursor
+    const cursor = document.getElementById('cursor');
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
+    document.addEventListener('mouseover', (e) => {
+      if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON' || e.target.closest('.cyber-card')) {
+        cursor.classList.add('hover');
+      } else {
+        cursor.classList.remove('hover');
+      }
+    });
+
+    // Theme to
